@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace Teste_04
 {
@@ -18,6 +21,10 @@ namespace Teste_04
         private Label labelErroNota1;
         private Label labelErroNota2;
         private Label LabelErroNome;
+        private Label label4;
+        private Label label5;
+        private List<Aluno> alunos;
+
 
         private void InitializeComponent()
         {
@@ -120,7 +127,8 @@ namespace Teste_04
             // labelErroNota1
             // 
             this.labelErroNota1.AutoSize = true;
-            this.labelErroNota1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelErroNota1.ForeColor =
+                System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.labelErroNota1.Location = new System.Drawing.Point(72, 195);
             this.labelErroNota1.Name = "labelErroNota1";
             this.labelErroNota1.Size = new System.Drawing.Size(101, 13);
@@ -132,7 +140,8 @@ namespace Teste_04
             // labelErroNota2
             // 
             this.labelErroNota2.AutoSize = true;
-            this.labelErroNota2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelErroNota2.ForeColor =
+                System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.labelErroNota2.Location = new System.Drawing.Point(226, 195);
             this.labelErroNota2.Name = "labelErroNota2";
             this.labelErroNota2.Size = new System.Drawing.Size(101, 13);
@@ -144,7 +153,8 @@ namespace Teste_04
             // LabelErroNome
             // 
             this.LabelErroNome.AutoSize = true;
-            this.LabelErroNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LabelErroNome.ForeColor =
+                System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.LabelErroNome.Location = new System.Drawing.Point(75, 91);
             this.LabelErroNome.Name = "LabelErroNome";
             this.LabelErroNome.Size = new System.Drawing.Size(107, 13);
@@ -198,7 +208,7 @@ namespace Teste_04
 
         }
 
-        void LimparCampos()
+        private void LimparCampos()
         {
             textBox1.Text = "";
             textBox2.Text = "";
@@ -218,56 +228,62 @@ namespace Teste_04
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
+            // Obtém os dados do aluno a partir dos campos de texto
             string nome = textBox1.Text.Trim();
-            string nota1Text = textBox2.Text.Trim();
-            string nota2Text = textBox3.Text.Trim();
+            double nota1 = Convert.ToDouble(textBox2.Text.Trim());
+            double nota2 = Convert.ToDouble(textBox3.Text.Trim());
+            int ano = DateTime.Now.Year;
 
-            // Verifica se os campos obrigatórios foram preenchidos
-            if (string.IsNullOrEmpty(nome))
+            // Cria um novo objeto Aluno com os dados
+            Aluno aluno = new Aluno
             {
-                LabelErroNome.Visible = true;
-                return;
+                Nome = textBox1.Text.Trim(),
+                Nota1 = double.Parse(textBox2.Text),
+                Nota2 = double.Parse(textBox3.Text),
+                AnoLancamento = DateTime.Now.Year
+            };
+            
+
+            // Obtém o diretório do arquivo JSON
+            string diretorio = AppDomain.CurrentDomain.BaseDirectory;
+            string caminhoPasta = Path.Combine(diretorio, "..", "..", "..", "Json");
+            string caminhoArquivo = Path.Combine(caminhoPasta, "alunos.json");
+
+            // Verifica se o diretório existe, se não, cria o diretório
+            if (!Directory.Exists(caminhoPasta))
+            {
+                Directory.CreateDirectory(caminhoPasta);
             }
 
-            if (string.IsNullOrEmpty(nota1Text))
+            // Verifica se o arquivo existe, se não, cria o arquivo com uma lista vazia
+            if (!File.Exists(caminhoArquivo))
             {
-                labelErroNota1.Visible = true;
-                return;
+                File.WriteAllText(caminhoArquivo, "[]");
             }
 
-            if (string.IsNullOrEmpty(nota2Text))
-            {
-                labelErroNota2.Visible = true;
-                return;
-            }
-            labelMensagem.Text = "";
+            // Realiza a leitura do arquivo JSON
+            string json = File.ReadAllText(caminhoArquivo);
 
-            // Verifica se as notas são números válidos
-            if (!double.TryParse(nota1Text, out double nota1) || !double.TryParse(nota2Text, out double nota2))
-            {
-                MessageBox.Show("As notas devem ser números válidos.", "Erro de entrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            // Desserializa o JSON em uma lista de alunos
+            List<Aluno> alunos = JsonSerializer.Deserialize<List<Aluno>>(json);
 
-            // Calcula a média do aluno
-            double media = (nota1 + nota2) / 2;
+            // Adiciona o aluno à lista
+            alunos.Add(aluno);
 
-            // Define o resultado com base na média
-            if (media >= 6.5)
-            {
-                label5.Text = "Aprovado";
-                label5.ForeColor = Color.Green;
-                //MessageBox.Show("Aprovado", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                label5.Text = "Reprovado";
-                label5.ForeColor = Color.Red;
-                MessageBox.Show("Reprovado", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            // Serializa a lista atualizada em JSON
+            string novoJson = JsonSerializer.Serialize(alunos);
+
+            // Escreve o JSON de volta no arquivo
+            File.WriteAllText(caminhoArquivo, novoJson);
+
+            // Exibe uma mensagem de sucesso
+            MessageBox.Show("Dados salvos com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Caminho do arquivo: " + caminhoArquivo);
         }
 
-        private Label label4;
-        private Label label5;
+
     }
 }
+
+
+
