@@ -1,0 +1,15 @@
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\bin\Debug\net6.0\Teste-02.exe
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\bin\Debug\net6.0\Teste-02.deps.json
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\bin\Debug\net6.0\Teste-02.runtimeconfig.json
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\bin\Debug\net6.0\Teste-02.dll
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\bin\Debug\net6.0\Teste-02.pdb
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.csproj.AssemblyReference.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.AssemblyInfoInputs.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.AssemblyInfo.cs
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.csproj.CoreCompileInputs.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.dll
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\refint\Teste-02.dll
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.pdb
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\Teste-02.genruntimeconfig.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-02\obj\Debug\net6.0\ref\Teste-02.dll

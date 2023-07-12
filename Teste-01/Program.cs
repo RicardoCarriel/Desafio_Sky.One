@@ -11,7 +11,7 @@ class Program
         double notaSegundoSemestre = double.Parse(Console.ReadLine());
 
         double media = CalcularMedia(notaPrimeiroSemestre, notaSegundoSemestre);
-        Console.WriteLine("`Sua média é: " + media);
+        Console.WriteLine("Sua média é: " + media);
     }
 
     static double CalcularMedia(double notaPrimeiroSemestre, double notaSegundoSemestre)
