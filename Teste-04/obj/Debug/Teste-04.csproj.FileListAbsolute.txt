@@ -1,0 +1,12 @@
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\bin\Debug\Teste-04.exe.config
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\bin\Debug\Teste-04.exe
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\bin\Debug\Teste-04.pdb
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste-04.csproj.AssemblyReference.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste-04.csproj.SuggestedBindingRedirects.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste_04.Form1.resources
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste_04.Properties.Resources.resources
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste-04.csproj.GenerateResource.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste-04.csproj.CoreCompileInputs.cache
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste-04.exe
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste-04.pdb
+C:\Users\rick0\source\repos\Desafio_Sky.One\Teste-04\obj\Debug\Teste_04.Form2.resources
